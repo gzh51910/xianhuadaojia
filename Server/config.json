@@ -1,0 +1,5 @@
+{
+  "port": 9999,
+  "dburl": "mongodb://localhost:27017",
+  "dbName": "h51907"
+}
