@@ -168,8 +168,8 @@ Vue.prototype.$confirm = MessageBox.confirm;
 Vue.prototype.$prompt = MessageBox.prompt;
 Vue.prototype.$notify = Notification;
 Vue.prototype.$message = Message;
-Vue.prototype.$axios = axios;
 //---------------------------------------
+Vue.prototype.$axios = axios;
 new Vue({
   router,
   render: h => h(App),
