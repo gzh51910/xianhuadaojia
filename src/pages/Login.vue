@@ -89,11 +89,9 @@ export default {
                         this.errorMsg = "用户名或密码错误";
                     } else {
                         let user = data.data[0];
-                        // 从响应头中获取Authorization
                         user.Authorization = headers.authorization;
-                        this.$store.commit("login", user);
-                        let redirectUrl =
-                            this.$route.query.redirectUrl || "/mine";
+                        this.$store.commit("login", user.Authorization);
+                        let redirectUrl = this.$route.query.redirectUrl || "/mine";
                         this.$router.push(redirectUrl);
                     }
                 } else {

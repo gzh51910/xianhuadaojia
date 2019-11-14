@@ -57,7 +57,7 @@
 </template>
 <script>
 import contact from "./contact";
-// import { my } from "../api";
+import { my } from "../api";
 export default {
     data() {
         let checkUsername = (rule, value, callback) => {
@@ -127,7 +127,15 @@ export default {
             this.$refs.regForm.validate(async valid => {
                 if (valid) {
                     let { password, username } = this.regForm;
-                    
+                    let { data } = await my.post("/reg", {
+                        username,
+                        password
+                    });
+                    if (data.status === 1) {
+                        this.$router.replace("/login");
+                    }
+                } else {
+                    return false;
                 }
             });
         }
