@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // 创建axios实例
 const my = axios.create({
-    baseURL: 'xxxx'
+  baseURL: "http://localhost:9999"
 });
 
 function get(path, params, config = {}) {

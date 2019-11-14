@@ -9,6 +9,7 @@ const colName = "user";
 //查询所有数据
 Router.get("/", async (req, res) => {
 	let data = await find(colName);
+	console.log(colName);
 	res.send(formatData({ data: data }));
 });
 

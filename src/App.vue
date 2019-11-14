@@ -1,13 +1,14 @@
 <template>
-  <div></div>
+    <router-view />
 </template>
 
 <script>
+// import contact from "./pages/contact";
 export default {
-  name: "app",
-  components: {}
+    name: "app",
+    // components: {
+    //     contact
+    // }
 };
 </script>
 
-<style>
-</style>

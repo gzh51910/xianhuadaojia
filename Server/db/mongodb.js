@@ -7,6 +7,8 @@ async function connect() {
 	//通过MongoClient连接MongoDB数据库
 	const client = await MongoClient.connect(dburl);
 	//通过Client下面的DB方法连接数据表格
+	console.log(dbName);
+	
 	const db = client.db(dbName);
 	return { client, db };
 }

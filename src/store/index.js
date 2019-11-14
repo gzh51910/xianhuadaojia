@@ -4,7 +4,7 @@ import Vue from 'vue'
 import Vuex from 'vuex';
 
 // import cart from './cart';
-// import common from './common';
+import common from './common';
 
 // 2. 使用(安装)Vuex
 Vue.use(Vuex);
@@ -13,13 +13,12 @@ Vue.use(Vuex);
 let store = new Vuex.Store({
     modules: {
         // cart,
-        // common
+        common
     }
 })
 // 5.在组件中使用vuex
 // this.$store.state.goodslist
 
-console.log('store:', store)
 
 // 4. 把store导出并注入Vue实例
 export default store;
