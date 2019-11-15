@@ -1,0 +1,51 @@
+{
+  "id": "1507712",
+  "name": "xhdj",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "493456",
+      "name": "豆瓣",
+      "font_class": "douban",
+      "unicode": "e7a1",
+      "unicode_decimal": 59297
+    },
+    {
+      "icon_id": "579863",
+      "name": "人人",
+      "font_class": "renrenwang",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "986196",
+      "name": "qq",
+      "font_class": "qq-copy",
+      "unicode": "e656",
+      "unicode_decimal": 58966
+    },
+    {
+      "icon_id": "986226",
+      "name": "微信",
+      "font_class": "weixin-copy",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "1002153",
+      "name": "微博",
+      "font_class": "weibo",
+      "unicode": "e6b2",
+      "unicode_decimal": 59058
+    },
+    {
+      "icon_id": "9283384",
+      "name": "网易",
+      "font_class": "wangyi",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    }
+  ]
+}
