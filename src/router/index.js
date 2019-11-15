@@ -3,9 +3,8 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-<<<<<<< HEAD
 import Personal from '../pages/Personal.vue'
-=======
+
 
 import Home from "../pages/Home.vue";
 import Reg from "../pages/Reg.vue";
@@ -17,15 +16,13 @@ import Elder from "../pages/Elder.vue";
 import Friend from "../pages/Friend.vue";
 import Lover from "../pages/Lover.vue";
 import NotFound from "../pages/NotFound.vue";
-import { TabPane } from "element-ui";
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 6efd51d... 11-15
-=======
->>>>>>> parent of 6efd51d... 11-15
-=======
->>>>>>> parent of 6efd51d... 11-15
-import { my } from "../api";
+import {
+  TabPane
+} from "element-ui";
+
+import {
+  my
+} from "../api";
 //懒加载
 const Home = () => import('../pages/Home.vue');
 const Reg = () => import('../pages/Reg.vue');
@@ -40,8 +37,7 @@ const Lover = () => import('../pages/Lover.vue');
 const NotFound = () => import('../pages/NotFound.vue');
 const upMessage = () => import('../pages/upMessage.vue');
 const router = new VueRouter({
-  routes: [
-    {
+  routes: [{
       name: "home",
       path: "/home",
       component: Home
@@ -78,7 +74,7 @@ const router = new VueRouter({
     {
       name: "login",
       path: "/login",
-        component: Login,
+      component: Login,
     },
     {
       name: "mine",
@@ -89,9 +85,7 @@ const router = new VueRouter({
       }
     },
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
       name: "personal",
       path: "/personal",
       component: Personal
@@ -102,12 +96,7 @@ const router = new VueRouter({
       component: upMessage
     },
     {
-=======
->>>>>>> parent of 6efd51d... 11-15
-=======
->>>>>>> parent of 6efd51d... 11-15
-=======
->>>>>>> parent of 6efd51d... 11-15
+
       name: "cart",
       path: "/cart",
       component: Cart,
@@ -128,24 +117,32 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let $store = router.app.$store;
-      let Authorization = $store.state.common.user;
+    let Authorization = $store.state.common.user;
     if (Authorization) {
       next();
       my.get("/verify", {
-        headers: { Authorization }
-      }).then(({ data }) => {
+        headers: {
+          Authorization
+        }
+      }).then(({
+        data
+      }) => {
         if (data.state === 0) {
           $store.commit("login");
           next({
             path: "login",
-            query: { redirectUrl: to.fullPath }
+            query: {
+              redirectUrl: to.fullPath
+            }
           });
         }
       });
     } else {
       next({
         path: "login",
-        query: { redirectUrl: to.fullPath }
+        query: {
+          redirectUrl: to.fullPath
+        }
       });
     }
   } else {
