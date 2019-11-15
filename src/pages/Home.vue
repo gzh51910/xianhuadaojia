@@ -42,8 +42,8 @@
             <el-card :body-style="{ padding: '0px' }" @click.native="gotoDetail(item.gid)">
               <img :src="item.url" class="image" />
               <div style="padding: 14px;text-align: center;">
-                <div>{{item.title}}</div>
-                <div>{{item.price}}</div>
+                <div class="goodname">{{item.title}}</div>
+                <div class="goodprice">{{item.price}}</div>
               </div>
             </el-card>
           </el-col>
@@ -72,6 +72,7 @@ export default {
     return {
       drawer: false,
       direction: "ltr",
+      Show_hidden: true,
       menu: [
         {
           name: "lover",
@@ -144,10 +145,20 @@ export default {
 };
 </script>
 <style lang="scss">
+//隐藏滚动条
 // .el-scrollbar__wrap {
 //   overflow-x: hidden;
 // }
 //<el-scrollbar style="height:100%">
+.goodname {
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.goodprice {
+  color: red;
+}
 .el-header {
   position: fixed;
   top: 0;

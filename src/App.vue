@@ -6,7 +6,9 @@
       mode="horizontal"
       text-color="#fff"
       active-text-color="#f17f7e"
+      background-color="#545c64"
       router
+      v-bind:class="{ qinjun: isActive }"
     >
       <el-menu-item
         :index="item.path"
@@ -22,12 +24,12 @@
 </template>
 
 <script>
-// import contact from "./pages/contact";
 export default {
   name: "app",
   data() {
     return {
       activeIndex: "/home",
+      isActive: false,
       menu: [
         {
           name: "home",
@@ -72,18 +74,13 @@ export default {
       ]
     };
   },
-  // methods: {
-  //   //用了ElementUI集成的router就可以不用这个了
-  //   goto(path) {
-  //     // this.$router.push(path);
-  //     // router.push()     跳转页面并留下浏览记录
-  //     // router.replace()  跳转页面，不保留任何浏览记录
-  //     //通过路由名称跳转,对象命名可以传参
-  //     this.$router.push(path);
-  //   }
-  // },
-  created() {
-    this.activeIndex = this.$route.path;
+  beforeUpdate() {
+    //判断显示隐藏
+    if (this.$route.path.slice(1, 6) == "goods") {
+      this.isActive = true;
+    } else {
+      this.isActive = false;
+    }
   }
 };
 </script>
@@ -112,10 +109,6 @@ i {
   font-style: normal;
   font-weight: normal;
 }
-.container {
-  height: 100vh;
-  overflow-x: hidden;
-}
 .container .el-menu-demo {
   position: fixed;
   bottom: 0;
@@ -129,7 +122,14 @@ i {
   flex: 1;
   padding: 0;
 }
-
+.container {
+  height: 100vh;
+  overflow-x: hidden;
+  .qinjun {
+    display: none;
+    background: red;
+  }
+}
 .price {
   del {
     color: #999;

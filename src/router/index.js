@@ -3,7 +3,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-import { my } from "../api";
+import {
+  my
+} from "../api";
 //懒加载
 const Home = () => import("../pages/Home.vue");
 const Reg = () => import("../pages/Reg.vue");
@@ -18,11 +20,10 @@ const Personal = () => import("../pages/Personal.vue");
 const NotFound = () => import("../pages/NotFound.vue");
 const upMessage = () => import("../pages/upMessage.vue");
 const router = new VueRouter({
-  routes: [
-    {
+  routes: [{
       name: "home",
       path: "/home",
-      component: Home
+      component: Home,
     },
     {
       name: "elder",
@@ -101,20 +102,28 @@ router.beforeEach((to, from, next) => {
     if (Authorization) {
       next();
       my.get("/verify", {
-        headers: { Authorization }
-      }).then(({ data }) => {
+        headers: {
+          Authorization
+        }
+      }).then(({
+        data
+      }) => {
         if (data.state === 0) {
           $store.commit("login");
           next({
             path: "login",
-            query: { redirectUrl: to.fullPath }
+            query: {
+              redirectUrl: to.fullPath
+            }
           });
         }
       });
     } else {
       next({
         path: "login",
-        query: { redirectUrl: to.fullPath }
+        query: {
+          redirectUrl: to.fullPath
+        }
       });
     }
   } else {

@@ -59,6 +59,39 @@
         <el-radio-button label="商品简介"></el-radio-button>
         <el-radio-button label="商品评论"></el-radio-button>
       </el-radio-group>
+      <div class="product-intro">
+        <img src="//asset.ibanquan.com/image/588442143f8f9009880009c8/s.jpeg?v=1485062676" />
+        <br />
+        <img src="//asset.ibanquan.com/image/588442160dd76c1c930009a2/s.jpeg?v=1485062678" />
+        <br />
+        <img src="//asset.ibanquan.com/image/588442183f8f9009880009cb/s.jpeg?v=1485062680" />
+        <br />
+        <img src="//asset.ibanquan.com/image/5884421ab1b95714230009a8/s.jpeg?v=1485062683" />
+      </div>
+    </div>
+    <div class="footer">
+      <ul class="footer-1">
+        <li>公司介绍</li>
+        <li>关于我们</li>
+        <li>品牌故事</li>
+      </ul>
+      <ul class="footer-2">
+        <li style="margin-right: 10%;">
+          <el-button type="info" round>QQ客服</el-button>
+        </li>
+        <li>
+          <el-button type="info" round>微信客服</el-button>
+        </li>
+      </ul>
+      <div class="footer-3">© 2015 xianhuadaojia.com All rights reserved. Powered by xiaohuatech.</div>
+      <div class="footer-4">
+        <i class="el-icon-platform-eleme" title="微信支付"></i>
+        <i class="el-icon-platform-eleme" title="支付宝"></i>
+        <i class="el-icon-platform-eleme" title="财付通"></i>
+        <i class="el-icon-platform-eleme" title="快钱"></i>
+        <i class="el-icon-platform-eleme" title="货到付款"></i>
+        <i class="el-icon-platform-eleme" title="银行卡"></i>
+      </div>
     </div>
     <el-drawer :visible.sync="drawer" :direction="direction">
       <div class="product-mobi-title">
@@ -90,6 +123,9 @@
         <el-button type="danger" round>加入购物车咯</el-button>
       </div>
     </el-drawer>
+    <div class="addCart">
+      <el-button type="danger" round>加入购物车♂</el-button>
+    </div>
   </div>
 </template>
 <script>
@@ -185,7 +221,7 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.go(-1);
+      history.go(-1);
     },
     goHome(path) {
       this.$router.push(path);
@@ -194,23 +230,22 @@ export default {
       console.log(value);
     }
   }
+  //  async created() {
+  //     let { id } = this.$route.params;
 
-//  async created() {
-//     let { id } = this.$route.params;
-
-//     let data = await this.axios.get(
-//       "https://www.nanshig.com/mobile/index.php",
-//       {
-//         params: {
-//           act: "goods",
-//           op: "goods_detail",
-//           goods_id: id,
-//           key: ""
-//         }
-//       }
-//     );
-//     console.log(data);
-    }
+  //     let data = await this.axios.get(
+  //       "https://www.nanshig.com/mobile/index.php",
+  //       {
+  //         params: {
+  //           act: "goods",
+  //           op: "goods_detail",
+  //           goods_id: id,
+  //           key: ""
+  //         }
+  //       }
+  //     );
+  //     console.log(data);
+};
 </script>
 <style lang="scss">
 .el-carousel {
@@ -242,9 +277,6 @@ h3 {
   overflow-wrap: break-word;
   color: #999999;
 }
-.el-menu.el-menu--horizontal {
-  display: none;
-}
 .product-price {
   font-size: 16px;
   padding: 10px 0;
@@ -257,7 +289,6 @@ h3 {
   }
 }
 .product-shink-option {
-  height: 50px;
   line-height: 50px;
   padding: 0 5%;
   font-size: 14px;
@@ -369,5 +400,115 @@ h3 {
   border-color: #eeeeee;
   color: #999999;
   margin-top: 10px;
+}
+.el-radio-group {
+  width: 100%;
+  display: flex;
+  margin-top: 2%;
+}
+.el-radio-button {
+  flex: 1;
+}
+.el-radio-button__inner {
+  width: 100%;
+}
+.product-intro {
+  font-size: 14px;
+  border-top: 0;
+  padding: 10px;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+    vertical-align: middle;
+  }
+}
+.footer {
+  background-color: #f5f5f5;
+  .footer-1 {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 5%;
+    padding: 20px 0 10px;
+    border-bottom: 1px solid #dfdfdf;
+    text-align: center;
+    li {
+      display: inline-block;
+      margin: 0;
+      width: 33.33%;
+      text-align: center;
+      min-width: 50px;
+      max-width: 112px;
+      vertical-align: top;
+      font-size: 15px;
+      color: #333333;
+      font-weight: 900;
+    }
+  }
+  .footer-2 {
+    float: none;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    li {
+      margin: 20px 0 14px;
+      width: 104px;
+      height: 32px;
+      line-height: 32px;
+      border-radius: 3px;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      text-align: center;
+      font-size: 12px;
+      display: inline-block;
+      margin: 10px 0 12px;
+    }
+  }
+  .footer-3 {
+    width: 100%;
+    text-align: center;
+    height: auto;
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 24px;
+    display: inline-block;
+    color: #777777;
+    vertical-align: middle;
+    word-break: break-word;
+    padding: 3% 6% 0%;
+  }
+  .footer-4 {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+    color: #9e9e9e;
+    font-size: 12px;
+    margin-bottom: 20%;
+    i {
+      font-size: 24px;
+      padding: 4px;
+      font-style: normal;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-stroke-width: 0.2px;
+    }
+  }
+}
+.addCart {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  padding: 6px 0;
+  z-index: 1;
+  border-top: 1px solid #eeeeee;
+  background-color: #ffffff;
+}
+.el-button.is-round {
+  padding: 3% 24%;
 }
 </style>
