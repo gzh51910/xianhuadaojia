@@ -1,5 +1,0 @@
-{
-  "port": 9999,
-  "dburl": "mongodb://10.3.136.105",
-  "dbName": "data"
-}
