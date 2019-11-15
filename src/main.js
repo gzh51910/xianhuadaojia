@@ -176,7 +176,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import '../lib/Moren.css';
 import "../lib/font_1507712_fyskijenna/iconfont.css";
 Vue.use(ElementUI);
-Vue.prototype.$axios = axios;
+Vue.prototype.axios = axios;
 new Vue({
   router,
   store,
