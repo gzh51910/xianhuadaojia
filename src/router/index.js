@@ -13,8 +13,10 @@ import Goods from "../pages/Goods.vue";
 import Elder from "../pages/Elder.vue";
 import Friend from "../pages/Friend.vue";
 import Lover from "../pages/Lover.vue";
+import Perspnal from "../pages/Personal.vue";
 import NotFound from "../pages/NotFound.vue";
-import { TabPane } from "element-ui";
+import upMessage from "../pages/upMessage.vue";
+// import { TabPane } from "element-ui";
 import { my } from "../api";
 //懒加载
 // const Home = () => import('./Home.vue');
@@ -66,7 +68,7 @@ const router = new VueRouter({
     {
       name: "login",
       path: "/login",
-        component: Login,
+      component: Login
     },
     {
       name: "mine",
@@ -75,6 +77,16 @@ const router = new VueRouter({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      name: "personal",
+      path: "/personal",
+      component: Perspnal
+    },
+    {
+      name: "upmessage",
+      path: "/upmessage/:id",
+      component: upMessage
     },
     {
       name: "cart",
@@ -97,7 +109,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let $store = router.app.$store;
-      let Authorization = $store.state.common.user;
+    let Authorization = $store.state.common.user.Authorization;
     if (Authorization) {
       next();
       my.get("/verify", {

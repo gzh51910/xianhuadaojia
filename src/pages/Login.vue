@@ -90,7 +90,7 @@ export default {
                     } else {
                         let user = data.data[0];
                         user.Authorization = headers.authorization;
-                        this.$store.commit("login", user.Authorization);
+                        this.$store.commit("login", user);
                         let redirectUrl = this.$route.query.redirectUrl || "/mine";
                         this.$router.push(redirectUrl);
                     }
@@ -113,7 +113,7 @@ body {
     overflow: hidden;
     color: #999;
     font-size: 14px;
-    padding: 0px 15px;
+    padding: 0 16px;
     display: flex;
     justify-content: space-between;
     span {
