@@ -1,7 +1,69 @@
 <template>
-  <div>
-    
-  </div>
+  <el-container class="wraper">
+    <div class="box">
+      <el-header height="auto" ref="elememt">
+        <i class="el-icon-d-arrow-right nemu" @click="drawer = true" type="primary"></i>
+        <div class="logo">
+          <img src="//asset.ibanquan.com/s/41222/403/logo?v=1543823931_1547108401" />
+        </div>
+        <div class="user">
+          <i class="el-icon-user" style="margin-right:10px" @click="goHome('Mine')"></i>
+          <i class="el-icon-shopping-cart-full" @click="goHome('cart')">
+            <span>1</span>
+          </i>
+        </div>
+        <el-drawer :visible.sync="drawer" :direction="direction" size="65%">
+          <div style="border-bottom: 1px solid #e5e5e5;">
+            <img
+              class="imglogo"
+              src="//asset.ibanquan.com/s/41222/403/logo?v=1543823931_1547108401"
+            />
+          </div>
+          <div type="text" class="sousuo">
+            <i class="el-icon-search" style="margin-right: 10px;"></i>
+            <input type="text" placeholder="搜索全店" />
+          </div>
+          <div>
+            <div class="nav-link">
+              <li
+                v-for="item in menu"
+                :key="item.name"
+                :index="item.path"
+                :class="item.icon"
+                @click="goHome(item.path)"
+              >{{item.text}}</li>
+            </div>
+          </div>
+        </el-drawer>
+      </el-header>
+      <el-main style="margin-bottom:15%">
+        <el-row :gutter="20">
+          <el-col v-for="item in datalist" :key="item._id" :xs="12" :sm="8" :md="6" :lg="4" :xl="3">
+            <el-card :body-style="{ padding: '0px' }" @click.native="gotoDetail(item.gid)">
+              <img :src="item.url" class="image" />
+              <div style="padding: 14px;text-align: center;">
+                <div>{{item.title}}</div>
+                <div>{{item.price}}</div>
+              </div>
+            </el-card>
+          </el-col>
+        </el-row>
+      </el-main>
+    </div>
+    <el-backtop target=".wraper" :bottom="100">
+      <div
+        style="{
+        height: 100%;
+        width: 100%;
+        background-color: #f2f5f6;
+        box-shadow: 0 0 6px rgba(0,0,0, .12);
+        text-align: center;
+        line-height: 40px;
+        color: #1989fa;
+      }"
+      >🌺</div>
+    </el-backtop>
+  </el-container>
 </template>
 <script>
 import { my } from "../api";

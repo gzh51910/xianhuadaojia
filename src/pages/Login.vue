@@ -1,5 +1,41 @@
 <template>
-  <div>登陆</div>
+    <div>
+        <el-form
+            label-position="right"
+            label-width="60px"
+            ref="loginForm"
+            :rules="rules"
+            style="margin:40px 0px"
+            hide-required-asterisk
+            :model="loginForm"
+        >
+            <el-form-item label="用户名" prop="username" :error="errorMsg">
+                <el-input v-model="loginForm.username" :style="inputwidth" placeholder="手机/用户名/邮箱"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="password" :error="errorMsg">
+                <el-input
+                    type="password"
+                    v-model="loginForm.password"
+                    :style="inputwidth"
+                    placeholder="密码"
+                ></el-input>
+            </el-form-item>
+
+            <el-form-item>
+                <el-button
+                    type="success"
+                    class="login-btn"
+                    :style="inputwidth"
+                    @click="submitForm('numberValidateForm')"
+                >登录</el-button>
+            </el-form-item>
+        </el-form>
+        <div class="login-out-sub-txt">
+            <span @click="$router.push('*');">忘记密码?</span>
+            <span @click="$router.push('/reg');">立即注册</span>
+        </div>
+       <contact />
+    </div>
 </template>
 <script>
 import contact from './contact'
@@ -54,7 +90,7 @@ export default {
                     } else {
                         let user = data.data[0];
                         user.Authorization = headers.authorization;
-                        this.$store.commit("login", user.Authorization);
+                        this.$store.commit("login", user);
                         let redirectUrl = this.$route.query.redirectUrl || "/mine";
                         this.$router.push(redirectUrl);
                     }
@@ -77,7 +113,7 @@ body {
     overflow: hidden;
     color: #999;
     font-size: 14px;
-    padding: 0px 15px;
+    padding: 0 16px;
     display: flex;
     justify-content: space-between;
     span {
