@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="portrait">
+        <div class="portrait"  @click="$router.push('/personal')">
             <el-col :span="24">
                 <div class="demo-basic--circle">
                     <div class="block">
