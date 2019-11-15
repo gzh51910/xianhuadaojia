@@ -3,7 +3,22 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
+<<<<<<< HEAD
 import Personal from '../pages/Personal.vue'
+=======
+
+import Home from "../pages/Home.vue";
+import Reg from "../pages/Reg.vue";
+import Login from "../pages/Login.vue";
+import Mine from "../pages/Mine.vue";
+import Cart from "../pages/Cart.vue";
+import Goods from "../pages/Goods.vue";
+import Elder from "../pages/Elder.vue";
+import Friend from "../pages/Friend.vue";
+import Lover from "../pages/Lover.vue";
+import NotFound from "../pages/NotFound.vue";
+import { TabPane } from "element-ui";
+>>>>>>> parent of 6efd51d... 11-15
 import { my } from "../api";
 //懒加载
 const Home = () => import('../pages/Home.vue');
@@ -57,7 +72,7 @@ const router = new VueRouter({
     {
       name: "login",
       path: "/login",
-      component: Login
+        component: Login,
     },
     {
       name: "mine",
@@ -68,6 +83,7 @@ const router = new VueRouter({
       }
     },
     {
+<<<<<<< HEAD
       name: "personal",
       path: "/personal",
       component: Personal
@@ -78,6 +94,8 @@ const router = new VueRouter({
       component: upMessage
     },
     {
+=======
+>>>>>>> parent of 6efd51d... 11-15
       name: "cart",
       path: "/cart",
       component: Cart,
@@ -98,7 +116,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let $store = router.app.$store;
-    let Authorization = $store.state.common.user.Authorization;
+      let Authorization = $store.state.common.user;
     if (Authorization) {
       next();
       my.get("/verify", {

@@ -14,7 +14,8 @@ Router.use((req, res, next) => {
     res.set({
       "Access-Control-Allow-Origin": currentOrigin,
       "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-      "Access-Control-Allow-HEADERS":"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
+      "Access-Control-Allow-HEADERS":
+        "Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
     });
   }
   if (req.method == "OPTIONS") {
@@ -32,8 +33,6 @@ Router.use("/user", userRouter);
 Router.use("/reg", regRouter);
 Router.use("/login", loginRouter);
 Router.get("/verify", (req, res) => {
-  console.log(req.get('Authorization'));
-  
   let { headers } = req.query;
   let { Authorization } = JSON.parse(headers);
   if (token.verfiy(Authorization)) {
