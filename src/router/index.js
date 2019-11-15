@@ -66,7 +66,7 @@ const router = new VueRouter({
     {
       name: "login",
       path: "/login",
-        component: Login,
+      component: Login
     },
     {
       name: "mine",
@@ -97,7 +97,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let $store = router.app.$store;
-      let Authorization = $store.state.common.user;
+    let Authorization = $store.state.common.user;
     if (Authorization) {
       next();
       my.get("/verify", {
