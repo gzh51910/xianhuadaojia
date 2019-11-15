@@ -1,12 +1,6 @@
 <template>
-  <div>购物车！</div>
+  <div>购物车</div>
 </template>
 <script>
-export default {
-  data() {
-    return {};
-  }
-};
+export default {};
 </script>
-<style>
-</style>
