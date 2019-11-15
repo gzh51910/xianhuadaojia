@@ -19,6 +19,9 @@ import Lover from "../pages/Lover.vue";
 import NotFound from "../pages/NotFound.vue";
 import { TabPane } from "element-ui";
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 6efd51d... 11-15
+=======
 >>>>>>> parent of 6efd51d... 11-15
 =======
 >>>>>>> parent of 6efd51d... 11-15
@@ -88,6 +91,7 @@ const router = new VueRouter({
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       name: "personal",
       path: "/personal",
       component: Personal
@@ -98,6 +102,8 @@ const router = new VueRouter({
       component: upMessage
     },
     {
+=======
+>>>>>>> parent of 6efd51d... 11-15
 =======
 >>>>>>> parent of 6efd51d... 11-15
 =======
