@@ -193,14 +193,8 @@ export default {
     handleChange(value) {
       console.log(value);
     }
-  },
-  async created() {
-    let { data } = await this.axios.get(
-      "http://www.xianhuadaojia.com/api/v1/product/?in_stock=true&type=%e6%9c%8b%e5%8f%8b&token=9dd5934c294149a8aaba5a3540d7f709&rnd=1573800224619"
-    );
-    console.log(data);
   }
-};
+
 //  async created() {
 //     let { id } = this.$route.params;
 
@@ -216,7 +210,7 @@ export default {
 //       }
 //     );
 //     console.log(data);
-//   }
+    }
 </script>
 <style lang="scss">
 .el-carousel {
