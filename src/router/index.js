@@ -3,17 +3,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
-
-// import Home from '../pages/Home.vue';
-// import Reg from '../pages/Reg.vue';
-// import Login from '../pages/Login.vue';
-// import Mine from '../pages/Mine.vue';
-// import Cart from '../pages/Cart.vue';
-// import Goods from '../pages/Goods.vue';
-// import Elder from '../pages/Elder.vue';
-// import Friend from '../pages/Friend.vue';
-// import Lover from '../pages/Lover.vue';
-// import NotFound from '../pages/NotFound.vue';
 //懒加载
 const Home = () => import('../pages/Home.vue');
 const Reg = () => import('../pages/Reg.vue');
