@@ -98,7 +98,11 @@ router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let $store = router.app.$store;
 <<<<<<< HEAD
+<<<<<<< HEAD
     let Authorization = $store.state.common.user;
+=======
+      let Authorization = $store.state.common.user;
+>>>>>>> parent of 6efd51d... 11-15
 =======
       let Authorization = $store.state.common.user;
 >>>>>>> parent of 6efd51d... 11-15
