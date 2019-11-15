@@ -40,8 +40,7 @@ Router.delete("/:id", async (req, res) => {
 //更新用户
 Router.patch("/:id", async (req, res) => {
   let { id } = req.params;
-  let { password, age, gender } = req.body;
-  let data = await update(colName, { _id: id }, { password, age, gender });
+  let data = await update(colName, { _id: id }, req.body);
   if (data.modifiedCount > 0) {
     res.send(formatData());
   } else {

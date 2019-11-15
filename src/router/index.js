@@ -3,7 +3,6 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-
 import Home from "../pages/Home.vue";
 import Reg from "../pages/Reg.vue";
 import Login from "../pages/Login.vue";
@@ -13,20 +12,24 @@ import Goods from "../pages/Goods.vue";
 import Elder from "../pages/Elder.vue";
 import Friend from "../pages/Friend.vue";
 import Lover from "../pages/Lover.vue";
+import Personal from "../pages/Personal.vue";
 import NotFound from "../pages/NotFound.vue";
-import { TabPane } from "element-ui";
+import upMessage from "../pages/upMessage.vue";
+// import { TabPane } from "element-ui";
 import { my } from "../api";
 //懒加载
-// const Home = () => import('./Home.vue');
-// const Reg = () => import('./Reg.vue');
-// const Login = () => import('./Login.vue');
-// const Mine = () => import('./Mine.vue');
-// const Cart = () => import('./Cart.vue');
-// const Goods = () => import('./Goods.vue');
-// const Elder = () => import('./Elder.vue');
-// const Friend = () => import('./Friend.vue');
-// const Lover = () => import('./Lover.vue');
-// const NotFound = () => import('./NotFound.vue');
+// const Home = () => import("../pages/Home.vue");
+// const Reg = () => import("../pages/Reg.vue");
+// const Login = () => import("../pages/Login.vue");
+// const Mine = () => import("../pages/Mine.vue");
+// const Cart = () => import("../pages/Cart.vue");
+// const Goods = () => import("../pages/Goods.vue");
+// const Elder = () => import("../pages/Elder.vue");
+// const Friend = () => import("../pages/Friend.vue");
+// const Lover = () => import("../pages/Lover.vue");
+// const Personal = () => import("../pages/Personal.vue");
+// const NotFound = () => import("../pages/NotFound.vue");
+// const upMessage = () => import("../pages/upMessage.vue");
 const router = new VueRouter({
   routes: [
     {
@@ -66,7 +69,7 @@ const router = new VueRouter({
     {
       name: "login",
       path: "/login",
-        component: Login,
+      component: Login
     },
     {
       name: "mine",
@@ -75,6 +78,16 @@ const router = new VueRouter({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      name: "personal",
+      path: "/personal",
+      component: Personal
+    },
+    {
+      name: "upmessage",
+      path: "/upmessage/:id",
+      component: upMessage
     },
     {
       name: "cart",
@@ -97,7 +110,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let $store = router.app.$store;
-      let Authorization = $store.state.common.user;
+    let Authorization = $store.state.common.user.Authorization;
     if (Authorization) {
       next();
       my.get("/verify", {

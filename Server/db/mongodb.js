@@ -85,7 +85,6 @@ async function update(colName, query, data) {
 	}
 
 	let result = await collection.updateMany(query, { $set: data });
-
 	client.close();
 	return result;
 }
