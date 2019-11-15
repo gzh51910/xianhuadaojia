@@ -1,6 +1,9 @@
 const express = require("express");
 let Router = express.Router();
-const { token, formatData } = require('../utils')
+const {
+	token,
+	formatData
+} = require('../utils')
 
 let userRouter = require("./user");
 let regRouter = require("./reg");
@@ -14,8 +17,7 @@ Router.use((req, res, next) => {
 		res.set({
 			"Access-Control-Allow-Origin": currentOrigin,
 			"Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-			"Access-Control-Allow-HEADERS":
-			"Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
+			"Access-Control-Allow-HEADERS": "Content-Type,Content-Length, Authorization, Accept,X-Requested-With"
 		});
 	}
 	if (req.method == "OPTIONS") {
@@ -26,7 +28,9 @@ Router.use((req, res, next) => {
 });
 
 //格式化参数
-Router.use(express.json(), express.urlencoded({ extended: false }));
+Router.use(express.json(), express.urlencoded({
+	extended: false
+}));
 
 //路由地址
 Router.use("/user", userRouter);
@@ -37,7 +41,9 @@ Router.get("/verify", (req, res) => {
 	if (token.verify(Authorization)) {
 		res.send(formatData());
 	} else {
-		res.send(formatData({ status: 0 }));
+		res.send(formatData({
+			status: 0
+		}));
 	}
 });
 module.exports = Router;
