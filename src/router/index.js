@@ -18,6 +18,9 @@ import Friend from "../pages/Friend.vue";
 import Lover from "../pages/Lover.vue";
 import NotFound from "../pages/NotFound.vue";
 import { TabPane } from "element-ui";
+<<<<<<< HEAD
+>>>>>>> parent of 6efd51d... 11-15
+=======
 >>>>>>> parent of 6efd51d... 11-15
 import { my } from "../api";
 //懒加载
@@ -84,6 +87,7 @@ const router = new VueRouter({
     },
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
       name: "personal",
       path: "/personal",
       component: Personal
@@ -94,6 +98,8 @@ const router = new VueRouter({
       component: upMessage
     },
     {
+=======
+>>>>>>> parent of 6efd51d... 11-15
 =======
 >>>>>>> parent of 6efd51d... 11-15
       name: "cart",
