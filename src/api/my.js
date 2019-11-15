@@ -16,12 +16,12 @@ function post(path, data = {}, config = {}) {
   return my.post(path, data, config);
 }
 
-function patch(path, data = {}, config = {}) {
-  return my.patch(path, data, config);
-}
+// function patch(path, data = {}, config = {}) {
+//   return my.patch(path, data, config);
+// }
 
 export default {
   get,
   post,
-  patch
+  // patch
 };

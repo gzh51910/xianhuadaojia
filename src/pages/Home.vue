@@ -66,7 +66,7 @@
   </el-container>
 </template>
 <script>
-import Api, { my } from "../Api";
+import { my } from "../api";
 export default {
   data() {
     return {

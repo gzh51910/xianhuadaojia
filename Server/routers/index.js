@@ -37,7 +37,6 @@ Router.use("/user", userRouter);
 Router.use("/reg", regRouter);
 Router.use("/login", loginRouter);
 Router.get("/verify", (req, res) => {
-	console.log(req.get('Authorization'));
 
 	let {
 		headers
