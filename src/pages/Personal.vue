@@ -81,8 +81,10 @@ export default {
 <style lang="scss">
 .portrait {
     height: 100px;
+    background: #fff;
     .demo-basic--circle {
         display: flex;
+        height: 100px;
         justify-content: space-between;
         align-items: center;
         .topimg {

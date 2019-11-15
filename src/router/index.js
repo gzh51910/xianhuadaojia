@@ -3,7 +3,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
-import Personal from '../pages/Personal.vue'
+// import Personal from '../pages/Personal.vue'
 import { my } from "../api";
 //懒加载
 const Home = () => import('../pages/Home.vue');
@@ -15,7 +15,7 @@ const Goods = () => import('../pages/Goods.vue');
 const Elder = () => import('../pages/Elder.vue');
 const Friend = () => import('../pages/Friend.vue');
 const Lover = () => import('../pages/Lover.vue');
-// const Personal =()=> import('../pages/Personal.vue')
+const Personal =()=> import('../pages/Personal.vue')
 const NotFound = () => import('../pages/NotFound.vue');
 const upMessage = () => import('../pages/upMessage.vue');
 const router = new VueRouter({
