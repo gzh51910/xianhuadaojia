@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // 创建axios实例
 const my = axios.create({
@@ -9,7 +9,7 @@ function get(path, params, config = {}) {
   return my.get(path, {
     ...config,
     params
-  });
+  })
 }
 
 function post(path, data = {}, config = {}) {

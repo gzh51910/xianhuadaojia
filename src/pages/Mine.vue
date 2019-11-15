@@ -1,12 +1,12 @@
 <template>
     <div>
-        <div class="portrait" @click="$router.push('/personal')">
+        <div class="portrait">
             <el-col :span="24">
                 <div class="demo-basic--circle">
                     <div class="block">
                         <el-avatar :size="70" :src="circleUrl"></el-avatar>
                         <div class="mine-name">
-                            <p>{{this.$store.state.common.user.username}}</p>
+                            <p>{{username}}</p>
                             <span>经验值{{grade}}分</span>
                         </div>
                     </div>
@@ -56,7 +56,8 @@
 export default {
     data() {
         return {
-            circleUrl:"https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
+            circleUrl:
+                "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
             username: "请登录账号",
             grade: 0,
             information: [
@@ -92,7 +93,7 @@ export default {
                 }
             ]
         };
-    },
+    }
 };
 </script>
 <style lang="scss">
@@ -172,6 +173,7 @@ body {
     }
 }
 .offlogin {
+  
     background: #fff;
     padding: 15px;
     margin: 15px 0px;
