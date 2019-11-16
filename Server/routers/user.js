@@ -12,13 +12,6 @@ Router.get("/", async (req, res) => {
   res.send(formatData({ data: data }));
 });
 
-Router.get("/ddd", async (req, res) => {
-	let { query } = req.query;
-	let classification = { classification: query }
-	let data = await find("all", classification);
-  res.send(formatData({ data: data }));
-});
-
 //查询单个用户
 Router.get("/:id", async (req, res) => {
   let { id } = req.params;

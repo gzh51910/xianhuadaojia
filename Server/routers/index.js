@@ -8,6 +8,8 @@ const {
 let userRouter = require("./user");
 let regRouter = require("./reg");
 let loginRouter = require("./login");
+let goodsRouter = require("./goods");
+let cartRouter = require("./cart");
 
 //跨域
 Router.use((req, res, next) => {
@@ -36,6 +38,8 @@ Router.use(express.json(), express.urlencoded({
 Router.use("/user", userRouter);
 Router.use("/reg", regRouter);
 Router.use("/login", loginRouter);
+Router.use("/goods", goodsRouter);
+Router.use("/cart", cartRouter);
 Router.get("/verify", (req, res) => {
 
   let {

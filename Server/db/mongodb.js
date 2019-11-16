@@ -24,6 +24,8 @@ async function find(colName, query = {}, options = {}) {
 		query._id = ObjectId(query._id);
 	}
 	//执行查询语句  query：查询条件{fields}
+	console.log(query);
+	
 	let data = await collection.find(query, { fields });
 	//跳过数量
 	if (skip) {
