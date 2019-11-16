@@ -160,7 +160,7 @@ export default {
   async created() {
     let {
       data: { data }
-    } = await my.get("/user/ddd", {
+    } = await my.get("/goods/ddd", {
       query: "Brand_zone"
     });
     this.datalist = data;
