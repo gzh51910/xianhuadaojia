@@ -37,7 +37,7 @@
                 </li>
             </ul>
         </div>
-        <div class="information" v-for="item in information" :key="item.title">
+        <div class="information" v-for="(item,idx) in information" :key="item.title" @click="(idx == 1?$router.push('/personal'):'')">
             <h4>
                 <span>
                     <i :class="item.icon"></i>
@@ -65,16 +65,6 @@ export default {
                     icon: "el-icon-success",
                     title: "会员等级",
                     title2: "普通会员"
-                },
-                {
-                    icon: "el-icon-s-ticket",
-                    title: "优惠卷",
-                    title2: ""
-                },
-                {
-                    icon: "el-icon-coin",
-                    title: "积分",
-                    title2: ""
                 },
                 {
                     icon: "el-icon-user-solid",
