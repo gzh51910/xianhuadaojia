@@ -136,7 +136,7 @@ export default {
   async created() {
     let {
       data: { data }
-    } = await my.get("/user/ddd", {
+    } = await my.get("/goods/ddd", {
       query: "Brand_zone"
     });
     this.datalist = data;
@@ -222,6 +222,7 @@ export default {
     margin: 0;
     font-size: 15px;
     color: #9d9a9e;
+    width: 80%;
   }
 }
 .nav-link {
