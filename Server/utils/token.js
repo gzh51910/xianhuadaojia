@@ -9,7 +9,6 @@ function create(data, expiresIn = 604800) {
 
 //验证令牌
 function verfiy(token) {
-    console.log('jinlaile');
   let data;
   try {
     //解码

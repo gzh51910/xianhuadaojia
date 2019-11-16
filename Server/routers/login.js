@@ -6,7 +6,7 @@ const { find } = require("../db/mongodb");
 
 const colName = "user";
 
-//查询所有数据
+//查询账号密码
 Router.get("/", async (req, res) => {
   let { username, password } = req.query;
   let data = await find(colName, { username, password });

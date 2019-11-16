@@ -43,7 +43,7 @@ import { my } from "../api";
 export default {
     data() {
         return {
-            inputwidth: "width:320px",
+            inputwidth: "width:260px",
             errorMsg: "",
             loginForm: {
                 username: "",

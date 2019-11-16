@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="portrait">
+        <div class="portrait" @click="$router.push('/personal')">
             <el-col :span="24">
                 <div class="demo-basic--circle">
                     <div class="block">
@@ -37,7 +37,7 @@
                 </li>
             </ul>
         </div>
-        <div class="information" v-for="item in information" :key="item.title">
+        <div class="information" v-for="(item,idx) in information" :key="item.title" @click="(idx == 1?$router.push('/personal'):'')">
             <h4>
                 <span>
                     <i :class="item.icon"></i>
@@ -49,7 +49,7 @@
                 </span>
             </h4>
         </div>
-        <p class="offlogin">退出当前登录</p>
+        <p class="offlogin" @click="offlogin">退出当前登录</p>
     </div>
 </template>
 <script>
@@ -58,23 +58,13 @@ export default {
         return {
             circleUrl:
                 "https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png",
-            username: "请登录账号",
+            username: this.$store.state.common.user.username,
             grade: 0,
             information: [
                 {
                     icon: "el-icon-success",
                     title: "会员等级",
                     title2: "普通会员"
-                },
-                {
-                    icon: "el-icon-s-ticket",
-                    title: "优惠卷",
-                    title2: ""
-                },
-                {
-                    icon: "el-icon-coin",
-                    title: "积分",
-                    title2: ""
                 },
                 {
                     icon: "el-icon-user-solid",
@@ -93,6 +83,12 @@ export default {
                 }
             ]
         };
+    },
+    methods:{
+        offlogin(){
+            this.$store.commit("logout");
+            this.$router.push('/home')
+        }
     }
 };
 </script>
@@ -173,10 +169,10 @@ body {
     }
 }
 .offlogin {
-  
+    margin-bottom: 65px;
+    margin-top: 15px;
     background: #fff;
     padding: 15px;
-    margin: 15px 0px;
     text-align: center;
     color: #777777;
 }
