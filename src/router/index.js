@@ -19,6 +19,12 @@ const Lover = () => import("../pages/Lover.vue");
 const Personal = () => import("../pages/Personal.vue");
 const NotFound = () => import("../pages/NotFound.vue");
 const upMessage = () => import("../pages/upMessage.vue");
+const Immortal = () => import("../pages/Immortal.vue");
+const Mmaterials = () => import("../pages/Mmaterials.vue");
+const Subscription = () => import("../pages/Subscription.vue");
+const Brand = () => import("../pages/Brand.vue");
+const Business = () => import("../pages/Business.vue");
+const Seek = () => import("../pages/Seek.vue");
 const router = new VueRouter({
   routes: [{
       name: "home",
@@ -76,6 +82,36 @@ const router = new VueRouter({
       name: "upmessage",
       path: "/upmessage/:id",
       component: upMessage
+    },
+    {
+      name: "seek",
+      path: "/seek",
+      component: Seek
+    },
+    {
+      name: "immortal",
+      path: "/immortal",
+      component: Immortal
+    },
+    {
+      name: "mmaterials",
+      path: "/mmaterials",
+      component: Mmaterials
+    },
+    {
+      name: "subscription",
+      path: "/subscription",
+      component: Subscription
+    },
+    {
+      name: "brand",
+      path: "/brand",
+      component: Brand
+    },
+    {
+      name: "business",
+      path: "/business",
+      component: Business
     },
     {
       name: "cart",

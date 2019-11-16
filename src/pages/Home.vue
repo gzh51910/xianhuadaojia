@@ -20,8 +20,8 @@
             />
           </div>
           <div type="text" class="sousuo">
-            <i class="el-icon-search" style="margin-right: 10px;"></i>
-            <input type="text" placeholder="搜索全店" />
+            <i class="el-icon-search" style="margin-right: 10px;" @click="goHome('/seek')"></i>
+            <input type="text" placeholder="搜索全店" v-model="value" filterable />
           </div>
           <div>
             <div class="nav-link">
@@ -99,8 +99,8 @@ export default {
           icon: "el-icon-s-home"
         },
         {
-          name: "materials",
-          path: "/materials",
+          name: "mmaterials",
+          path: "/mmaterials",
           text: "进口材料",
           icon: "el-icon-s-home"
         },
@@ -123,6 +123,29 @@ export default {
           icon: "el-icon-s-home"
         }
       ],
+      options: [
+        {
+          value: "选项1",
+          label: "黄金糕"
+        },
+        {
+          value: "选项2",
+          label: "双皮奶"
+        },
+        {
+          value: "选项3",
+          label: "蚵仔煎"
+        },
+        {
+          value: "选项4",
+          label: "龙须面"
+        },
+        {
+          value: "选项5",
+          label: "北京烤鸭"
+        }
+      ],
+      value: "",
       datalist: []
     };
   },

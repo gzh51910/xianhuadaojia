@@ -85,12 +85,12 @@
       </ul>
       <div class="footer-3">© 2015 xianhuadaojia.com All rights reserved. Powered by xiaohuatech.</div>
       <div class="footer-4">
-        <i class="el-icon-platform-eleme" title="微信支付"></i>
-        <i class="el-icon-platform-eleme" title="支付宝"></i>
-        <i class="el-icon-platform-eleme" title="财付通"></i>
-        <i class="el-icon-platform-eleme" title="快钱"></i>
-        <i class="el-icon-platform-eleme" title="货到付款"></i>
-        <i class="el-icon-platform-eleme" title="银行卡"></i>
+        <i class="iconfont iconweixinzhifu2" title="微信支付"></i>
+        <i class="iconfont iconzhifubaozhifu" title="支付宝"></i>
+        <i class="iconfont iconcaifutong" title="财付通"></i>
+        <i class="iconfont iconkuaiqian-copy" title="快钱"></i>
+        <i class="iconfont iconhuodaofukuan" title="货到付款"></i>
+        <i class="el-icon-bank-card" title="银行卡"></i>
       </div>
     </div>
     <el-drawer :visible.sync="drawer" :direction="direction">
@@ -130,6 +130,7 @@
 </template>
 <script>
 import { slider, slideritem } from "vue-concise-slider";
+import { my } from "../api";
 export default {
   name: "app",
   data() {
@@ -230,21 +231,10 @@ export default {
       console.log(value);
     }
   }
-  //  async created() {
-  //     let { id } = this.$route.params;
-
-  //     let data = await this.axios.get(
-  //       "https://www.nanshig.com/mobile/index.php",
-  //       {
-  //         params: {
-  //           act: "goods",
-  //           op: "goods_detail",
-  //           goods_id: id,
-  //           key: ""
-  //         }
-  //       }
-  //     );
-  //     console.log(data);
+  // async created() {
+  //   let data = await my.get("/user/ddd", {});
+  //   this.datalist = data;
+  // }
 };
 </script>
 <style lang="scss">
@@ -507,8 +497,8 @@ h3 {
   z-index: 1;
   border-top: 1px solid #eeeeee;
   background-color: #ffffff;
-}
-.el-button.is-round {
-  padding: 3% 24%;
+  .el-button.is-round {
+    padding: 3% 24%;
+  }
 }
 </style>
