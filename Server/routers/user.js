@@ -10,7 +10,7 @@ const {
   update
 } = require("../db/mongodb");
 
-const colName = "all";
+const colName = "user";
 
 //查询所有数据
 Router.get("/", async (req, res) => {
