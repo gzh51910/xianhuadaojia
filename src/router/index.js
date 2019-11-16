@@ -18,6 +18,7 @@ const Personal = () => import("../pages/Personal.vue");
 const NotFound = () => import("../pages/NotFound.vue");
 const upMessage = () => import("../pages/upMessage.vue");
 const router = new VueRouter({
+  // mode: history,
   routes: [
     {
       name: "home",
