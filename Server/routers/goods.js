@@ -11,6 +11,7 @@ const {
 
 const colName = "all";
 
+
 //查询某种类型
 Router.get("/ddd", async (req, res) => {
   let {
@@ -24,6 +25,7 @@ Router.get("/ddd", async (req, res) => {
     data: data
   }));
 });
+
 
 //通过gid查找
 Router.get("/id", async (req, res) => {
@@ -51,22 +53,5 @@ Router.get("/:id", async (req, res) => {
   }));
 });
 
-Router.post("/", async (req, res) => {
-  let {
-    username,
-    password
-  } = req.body;
-  let data = await create(colName, {
-    username,
-    password
-  });
-  if (data.insertedCount > 0) {
-    res.send(formatData());
-  } else {
-    res.send(formatData({
-      status: 0
-    }));
-  }
-});
 
 module.exports = Router;

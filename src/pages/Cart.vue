@@ -11,17 +11,17 @@
                 <span class="alldel" @click="clearCart">全部删除</span>
             </div>
             <ul class="cart-li">
-                <li v-for="item in goodslist" :key="item.id">
+                <li v-for="item in goodslist" :key="item._id">
                     <div class="li-left">
-                        <el-checkbox v-model="item.onecheck" class="onecheck"></el-checkbox>
+                        <el-checkbox v-model="checkall" class="onecheck"></el-checkbox>
                         <div class="cart-image">
-                            <img :src="item.imgurl" alt />
+                            <img :src="item.url" alt />
                         </div>
-                        <span class="cartname">{{item.name}}</span>
+                        <span class="cartname">{{item.title}}</span>
                     </div>
                     <div class="li-right">
-                        <span class="pirce">￥{{item.price}}</span>
-                        <i class="el-icon-delete" @click="removeItem(item.id)"></i>
+                        <span class="pirce">{{item.price}}</span>
+                        <i class="el-icon-delete" @click="removeItem(item._id)"></i>
                         <el-input-number v-model="item.qty" size="mini" :min="1" :max="10"></el-input-number>
                     </div>
                 </li>
@@ -30,7 +30,7 @@
                 <el-button type="danger">确认结算</el-button>
                 <div class="cart-pirce">
                     <em>合计:</em>
-                    <span class="allpirce">{{totalPrice.toFixed(2)}}</span>
+                    <span class="allpirce">{{totalPrice}}</span>
                     <p>(不含运费)</p>
                 </div>
             </div>
@@ -45,6 +45,10 @@ export default {
             checkall: false,
             goodsnum: this.$store.state.cart.goodslist.length
         };
+    },
+    created() {
+        let a = this.$store.state.common.user._id;
+        this.$store.dispatch("po", a);
     },
     computed: {
         ...mapState({

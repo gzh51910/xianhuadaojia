@@ -77,7 +77,7 @@ async function remove(colName, query) {
 
 //更新数据
 async function update(colName, query, data) {
-  const { db, client } = await connect();
+  const { db, client } = await connect();a
   let collection = db.collection(colName);
   if (query._id && typeof query._id === "string") {
     query._id = ObjectId(query._id);
@@ -87,4 +87,13 @@ async function update(colName, query, data) {
   return result;
 }
 
-module.exports = { find, create, remove, update };
+// async function aggregate(colName,data) {
+// 	const { db, client } = await connect();
+// 	let collection = db.collection(colName);
+// 	console.log(data);
+// 	let result = await collection.aggregateMany(query, { $set: data });
+// 	client.close();
+// 	return result;
+// }
+
+module.exports = { find, create, remove, update};

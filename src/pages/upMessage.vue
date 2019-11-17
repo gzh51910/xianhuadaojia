@@ -13,6 +13,7 @@
 </template>
 <script>
 import { my } from "../api";
+// import { log } from 'util';
 export default {
     data() {
         return {
@@ -66,10 +67,12 @@ export default {
             if (result.data.status == 1) {
                 let data = await my.get(
                     `user/${this.$store.state.common.user._id}`
-                )
+                );
                 let user = data.data.data[0];
                 this.$store.commit("login", user);
-                this.$router.push('/personal')
+                this.$router.push("/personal");
+            } else {
+                this.$router.push("/personal");
             }
         }
     },

@@ -60,7 +60,7 @@ export default {
                 },
                 {
                     title: "身份证号码",
-                    title2: this.$store.state.common.user.idnumben,
+                    title2: this.$store.state.common.user.idnumber,
                     classes:'idnumber'
                 },
                 {
