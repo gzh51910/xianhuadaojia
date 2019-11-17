@@ -22,7 +22,12 @@
                     <div class="li-right">
                         <span class="pirce">{{item.price}}</span>
                         <i class="el-icon-delete" @click="removeItem(item._id)"></i>
-                        <el-input-number v-model="item.qty" size="mini" :min="1" :max="10"></el-input-number>
+                        <el-input-number
+                            v-model="item.qty"
+                            size="mini"
+                            :min="1"
+                            :max="item.inventory*1"
+                        ></el-input-number>
                     </div>
                 </li>
             </ul>
@@ -38,17 +43,20 @@
     </div>
 </template>
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapMutations } from "vuex";
 export default {
     data() {
         return {
             checkall: false,
-            goodsnum: this.$store.state.cart.goodslist.length
+            goodsnum: 0
         };
     },
     created() {
         let a = this.$store.state.common.user._id;
         this.$store.dispatch("po", a);
+        if (a) {
+            this.goodsnum = 1;
+        }
     },
     computed: {
         ...mapState({
@@ -56,7 +64,12 @@ export default {
                 return state.cart.goodslist;
             }
         }),
-        ...mapGetters(["totalPrice"])
+        totalPrice() {
+            return this.goodslist.reduce(
+                (prev, item) => prev + item.price.substr(1) * item.qty,
+                0
+            );
+        }
     },
     methods: {
         ...mapMutations({
