@@ -179,6 +179,7 @@ export default {
           style: {
             background:
               'url("//asset.ibanquan.com/image/59a4d4a70dd76c3e3f000e40/s_w480h480.jpeg?v=1503974568")left/100% 100%'
+            // `url("${this.messageimg[0]}")left/100% 100%`
           }
         },
         {
@@ -229,10 +230,15 @@ export default {
     handleChange(value) {
       this.goodsvue = value;
     },
-    buy() {
+    async buy() {
       let useid = this.$store.state.common.user._id;
       let gid = this.message.gid;
       let num = this.goodsvue;
+      await my.post("/cart", {
+        userid: useid,
+        goodsid: gid,
+        pty: `${num}`
+      });
     }
   },
   async beforeCreate() {
@@ -243,12 +249,13 @@ export default {
     });
     this.message = data[0];
     //轮播图
-    // data[0].imgs
-    //   .slice(1, -1)
-    //   .split(",")
-    //   .map(item => {
-    //   });
-    // console.log(this.messageimg);
+    data[0].imgs
+      .slice(1, -1)
+      .split(",")
+      .map(item => {
+        item.slice(1, -1);
+        this.messageimg.push(item.slice(1, -1));
+      });
     // let data1 = await my.get("/goods/ddd", {
     //   query: "Brand_zone"
     // });
