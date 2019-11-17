@@ -25,6 +25,7 @@ const Subscription = () => import("../pages/Subscription.vue");
 const Brand = () => import("../pages/Brand.vue");
 const Business = () => import("../pages/Business.vue");
 const Seek = () => import("../pages/Seek.vue");
+const Advertising = () => import("../pages/Advertising.vue");
 const router = new VueRouter({
   routes: [{
       name: "home",
@@ -49,7 +50,7 @@ const router = new VueRouter({
     {
       name: "goods",
       path: "/goods/:id",
-      component: Goods
+      component: Goods,
     },
     {
       path: "/",
@@ -64,6 +65,11 @@ const router = new VueRouter({
       name: "login",
       path: "/login",
       component: Login
+    },
+    {
+      name: "advertising",
+      path: "/advertising",
+      component: Advertising
     },
     {
       name: "mine",

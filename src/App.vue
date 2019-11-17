@@ -251,6 +251,8 @@ export default {
     let pd = this.$route.path.slice(1, 15);
     if (pd.match(RegExp(/goods/))) {
       this.isActive = true;
+    } else if (pd.match(RegExp(/dvertising/))) {
+      this.isActive = true;
     } else {
       this.isActive = false;
     }
@@ -262,6 +264,9 @@ export default {
         return;
       }
     }
+  },
+  created() {
+    this.$router.push("/Advertising");
   }
 };
 </script>
@@ -368,5 +373,19 @@ i {
   .el-input {
     font-size: 20px;
   }
+}
+.ggimg {
+  width: 100%;
+  z-index: 3001;
+  position: absolute;
+  height: 45%;
+  top: 0;
+}
+.ggimg1 {
+  width: 100%;
+  z-index: 3001;
+  position: absolute;
+  height: 41%;
+  bottom: -2%;
 }
 </style>
