@@ -6,31 +6,7 @@ export default {
   state: {
     goodslist: []
   },
-
-  getters: {
-    totalPrice(state) {
-      return state.goodslist.reduce((prev, item) => {
-        let num = item.price.substr(1) * 1;
-        prev + num * item.qty;
-        console.log(prev + num * item.qty);
-        
-      }, 0);
-    }
-  },
   mutations: {
-    // 删除单个商品
-    // state:上面的state
-    // payload:触发mutation时传入的参数
-    // async po(state, id) {
-    //   console.log(id);
-
-    //   // let {data: { data }} = await my.get("cart", { userid: id });
-    //   // let datalist = data.splice(-1, 1);
-    //   // console.log("未截串", data);
-    //   // console.log("截串", datalist);
-
-    //
-    // },
     Po(state, data) {
       state.goodslist = data;
     },
