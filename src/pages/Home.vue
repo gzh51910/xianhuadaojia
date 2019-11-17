@@ -1,5 +1,5 @@
 <template>
-  <el-container class="wraper">
+  <el-container class="wraper" v-if="datalist[0]">
     <div class="box">
       <el-header height="auto" ref="elememt">
         <i class="el-icon-d-arrow-right nemu" @click="drawer = true" type="primary"></i>
@@ -64,6 +64,15 @@
       >🌺</div>
     </el-backtop>
   </el-container>
+  <div
+    v-else
+    v-loading.fullscreen.lock="true"
+    element-loading-text="大坏蛋，人家正在为你加载啦"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
+    <img src="../image/1.gif" class="ggimg" />
+    <img src="../image/1.gif" class="ggimg1" />
+  </div>
 </template>
 <script>
 import { my } from "../api";
@@ -191,9 +200,11 @@ export default {
   background-color: #ffffff;
   z-index: 1;
 }
+.box{
 .el-main {
   padding-top: 23%;
   width: 100%;
+}
 }
 .nemu {
   margin: 30px 0 0 -5px;

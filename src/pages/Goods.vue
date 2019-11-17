@@ -1,5 +1,5 @@
 <template>
-  <div style="border-color: #eeeeee;">
+  <div style="border-color: #eeeeee;" v-if="message.gid">
     <div>
       <el-button
         icon="el-icon-arrow-left"
@@ -20,20 +20,11 @@
       </slider>
     </div>
     <div style="padding: 10px 5%;">
-      <h3>如初</h3>
-      <div class="product-description">
-        花 材：11枝红玫瑰搭配满天星，栀子叶花束
-        <br />
-        <br />花 语：人生若只如初见
-        <br />
-        <br />附 送：免费附送精美贺卡，代写祝福。(您下单时可填写留言栏)
-        <br />
-        <br />配送范围：全国 （可配送至全国1000多城市，市区免配送费）
-      </div>
+      <h3>{{message.title}}</h3>
+      <div class="product-description" v-html="message.says"></div>
       <div class="product-price">
         <strong>
-          ￥
-          <span>139.00</span>
+          <span>{{message.price}}</span>
         </strong>
       </div>
     </div>
@@ -95,19 +86,15 @@
     </div>
     <el-drawer :visible.sync="drawer" :direction="direction">
       <div class="product-mobi-title">
-        <img
-          src="//asset.ibanquan.com/image/59a4d4a5b1b9572079000d8a/s_w480h480.jpeg?v=1503974565"
-          class="product-mobi-img"
-        />
-        <h2 class="product-title">如初</h2>
+        <img :src="message.url" class="product-mobi-img" />
+        <h2 class="product-title">{{message.title}}</h2>
         <div class="product-price">
           <strong class="price_color">
-            ￥
-            <span class="settings-color">139</span>
+            <span class="settings-color">{{message.price}}</span>
           </strong>
           <span class="product-sold">
             已售出
-            <span>71</span>件
+            <span>{{message.sell}}</span>件
           </span>
         </div>
       </div>
@@ -116,7 +103,7 @@
         <el-input-number size="mini" v-model="num" @change="handleChange" :min="1" :max="999"></el-input-number>
         <div class="product-quantity-desc">
           （库存
-          <span>929</span>件）
+          <span>{{message.inventory}}</span>件）
         </div>
       </div>
       <div class="cart">
@@ -126,6 +113,15 @@
     <div class="addCart">
       <el-button type="danger" round>加入购物车♂</el-button>
     </div>
+  </div>
+  <div
+    v-else
+    v-loading.fullscreen.lock="true"
+    element-loading-text="大坏蛋，人家正在为你加载啦"
+    element-loading-background="rgba(0, 0, 0, 0.8)"
+  >
+    <img src="../image/1.gif" class="ggimg" />
+    <img src="../image/1.gif" class="ggimg1" />
   </div>
 </template>
 <script>
@@ -141,6 +137,8 @@ export default {
       num: 1,
       someList: [],
       someList1: [],
+      message: "",
+      messageimg: [],
       options1: {
         currentPage: 0,
         thresholdDistance: 100,
@@ -230,11 +228,28 @@ export default {
     handleChange(value) {
       console.log(value);
     }
+  },
+  async beforeCreate() {
+    let {
+      data: { data }
+    } = await my.get("/goods/id", {
+      id: this.$route.params.id
+    });
+    this.message = data[0];
+    console.log(this.message);
+
+    //轮播图
+    // data[0].imgs
+    //   .slice(1, -1)
+    //   .split(",")
+    //   .map(item => {
+    //   });
+    // console.log(this.messageimg);
+    // let data1 = await my.get("/goods/ddd", {
+    //   query: "Brand_zone"
+    // });
+    // this.datalist = data;
   }
-  // async created() {
-  //   let data = await my.get("/user/ddd", {});
-  //   this.datalist = data;
-  // }
 };
 </script>
 <style lang="scss">
