@@ -107,11 +107,11 @@
         </div>
       </div>
       <div class="cart">
-        <el-button type="danger" round>加入购物车咯</el-button>
+        <el-button type="danger" round @click="buy()">加入购物车咯</el-button>
       </div>
     </el-drawer>
     <div class="addCart">
-      <el-button type="danger" round>加入购物车♂</el-button>
+      <el-button type="danger" round @click="drawer = true">加入购物车♂</el-button>
     </div>
   </div>
   <div
@@ -139,6 +139,7 @@ export default {
       someList1: [],
       message: "",
       messageimg: [],
+      goodsvue: "",
       options1: {
         currentPage: 0,
         thresholdDistance: 100,
@@ -198,7 +199,7 @@ export default {
           style: {
             background:
               'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33%"
+            width: "33.3%"
           }
         },
         {
@@ -226,7 +227,12 @@ export default {
       this.$router.push(path);
     },
     handleChange(value) {
-      console.log(value);
+      this.goodsvue = value;
+    },
+    buy() {
+      let useid = this.$store.state.common.user._id;
+      let gid = this.message.gid;
+      let num = this.goodsvue;
     }
   },
   async beforeCreate() {
@@ -236,8 +242,6 @@ export default {
       id: this.$route.params.id
     });
     this.message = data[0];
-    console.log(this.message);
-
     //轮播图
     // data[0].imgs
     //   .slice(1, -1)
