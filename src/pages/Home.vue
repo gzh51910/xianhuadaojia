@@ -36,7 +36,7 @@
           </div>
         </el-drawer>
       </el-header>
-      <el-main style="margin-bottom:15%">
+      <el-main>
         <el-row :gutter="20">
           <el-col v-for="item in datalist" :key="item._id" :xs="12" :sm="8" :md="6" :lg="4" :xl="3">
             <el-card :body-style="{ padding: '0px' }" @click.native="gotoDetail(item.gid)">
@@ -82,6 +82,7 @@ export default {
       drawer: false,
       direction: "ltr",
       Show_hidden: true,
+      hanhong: "",
       menu: [
         {
           name: "lover",
@@ -114,44 +115,10 @@ export default {
           icon: "el-icon-s-home"
         },
         {
-          name: "subscription",
-          path: "/subscription",
-          text: "鲜花订阅",
-          icon: "el-icon-s-home"
-        },
-        {
           name: "brand",
           path: "/brand",
           text: "品牌专区",
           icon: "el-icon-s-home"
-        },
-        {
-          name: "business",
-          path: "/business",
-          text: "商务用花",
-          icon: "el-icon-s-home"
-        }
-      ],
-      options: [
-        {
-          value: "选项1",
-          label: "黄金糕"
-        },
-        {
-          value: "选项2",
-          label: "双皮奶"
-        },
-        {
-          value: "选项3",
-          label: "蚵仔煎"
-        },
-        {
-          value: "选项4",
-          label: "龙须面"
-        },
-        {
-          value: "选项5",
-          label: "北京烤鸭"
         }
       ],
       value: "",
@@ -170,7 +137,7 @@ export default {
     let {
       data: { data }
     } = await my.get("/goods/ddd", {
-      query: "Brand_zone"
+      query: "index"
     });
     this.datalist = data;
   }
@@ -200,11 +167,12 @@ export default {
   background-color: #ffffff;
   z-index: 1;
 }
-.box{
-.el-main {
-  padding-top: 23%;
-  width: 100%;
-}
+.box {
+  .el-main {
+    padding-top: 23%;
+    width: 100%;
+    padding-bottom: 16%;
+  }
 }
 .nemu {
   margin: 30px 0 0 -5px;

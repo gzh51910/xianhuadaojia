@@ -11,6 +11,7 @@ Vue.use(Vuex);
 
 // 3. 实例化一个Store（一个应用只运行有一个Store）
 let store = new Vuex.Store({
+    mode: "history",
     modules: {
         cart,
         common
