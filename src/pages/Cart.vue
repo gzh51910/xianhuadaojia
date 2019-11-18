@@ -1,17 +1,17 @@
 <template>
     <div>
-        <div class="false-form" v-if="goodsnum == 0">
+        <div class="false-form" v-if="goodsnum == goodslength">
             <i class="el-icon-goods"></i>
             <p>您的购物车还没有商品，快去挑选心爱的商品吧！</p>
             <el-button type="danger" class="cart-go" @click="$router.push('/home')">去逛逛</el-button>
         </div>
-        <div class="cart-main" v-else>
+        <div class="cart-main">
             <div class="cart-operation">
                 <el-checkbox v-model="checkall">全选</el-checkbox>
                 <span class="alldel" @click="clearCart">全部删除</span>
             </div>
             <ul class="cart-li">
-                <li v-for="item in goodslist" :key="item._id">
+                <li v-for="item in goodslist" :key="item.gid">
                     <div class="li-left">
                         <el-checkbox v-model="checkall" class="onecheck"></el-checkbox>
                         <div class="cart-image">
@@ -21,12 +21,13 @@
                     </div>
                     <div class="li-right">
                         <span class="pirce">{{item.price}}</span>
-                        <i class="el-icon-delete" @click="removeItem(item._id)"></i>
+                        <i class="el-icon-delete" @click="removeItem(item.gid,item.userid)"></i>
                         <el-input-number
                             v-model="item.qty"
                             size="mini"
                             :min="1"
                             :max="item.inventory*1"
+                            @change="handleChange(item.qty,item.gid,item.userid)"
                         ></el-input-number>
                     </div>
                 </li>
@@ -43,7 +44,8 @@
     </div>
 </template>
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState } from "vuex";
+import { my } from "../api";
 export default {
     data() {
         return {
@@ -51,20 +53,13 @@ export default {
             goodsnum: 0
         };
     },
-    beforeMount() {
-        let a = this.$store.state.common.user._id;
-        this.$store.dispatch("po", a);
-        // this.goodsnum = this.$store.state.cart.goodslist.length;
-        // console.log(this.$store.state.cart.goodslist.length);
-        // console.log(this.$store.state.common.user._id);
-    },
-    Mounted() {
-        console.log(this.$store.state.cart.goodslist.length);
-    },
     computed: {
         ...mapState({
             goodslist(state) {
                 return state.cart.goodslist;
+            },
+            goodslength(state) {
+                return state.cart.goodslength;
             }
         }),
         totalPrice() {
@@ -75,14 +70,30 @@ export default {
         }
     },
     methods: {
-        ...mapMutations({
-            removeItem: "removeFromCart",
-            changeQty2: (commit, payload) => {
-                // 其他额外操作
-                commit("changQty", payload);
+        async removeItem(id, gid) {
+            let result = await my.patch("/cart/del", { id, gid });
+            if (result.data.status == 1) {
+                this.$store.dispatch("po", gid);
             }
-        }),
-        ...mapMutations(["clearCart", "changeQty"])
+        },
+        async handleChange(value, id, gid) {
+            let result = await my.patch("/cart/upda", { value, id, gid });
+            if (result.data.status == 1) {
+                this.$store.dispatch("po", gid);
+            }
+        },
+        async clearCart() {
+            let id = this.$store.state.common.user._id;
+            let result = await my.patch("/cart/delall", { id });
+            if (result.data.status == 1) {
+                this.$store.dispatch("po", id);
+                this.goodsnum = 0;
+            }
+        }
+    },
+    beforeCreate() {
+        let a = this.$store.state.common.user._id;
+        this.$store.dispatch("po", a);
     }
 };
 </script>
