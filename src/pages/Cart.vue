@@ -51,12 +51,15 @@ export default {
             goodsnum: 0
         };
     },
-    created() {
+    beforeMount() {
         let a = this.$store.state.common.user._id;
         this.$store.dispatch("po", a);
-        if (a) {
-            this.goodsnum = 1;
-        }
+        // this.goodsnum = this.$store.state.cart.goodslist.length;
+        // console.log(this.$store.state.cart.goodslist.length);
+        // console.log(this.$store.state.common.user._id);
+    },
+    Mounted() {
+        console.log(this.$store.state.cart.goodslist.length);
     },
     computed: {
         ...mapState({
