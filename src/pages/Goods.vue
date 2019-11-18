@@ -222,7 +222,8 @@ export default {
   },
   methods: {
     goBack() {
-      history.go(-1);
+      // history.go(-1);
+      this.$router.back();
     },
     goHome(path) {
       this.$router.push(path);

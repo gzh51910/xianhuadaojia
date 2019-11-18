@@ -21,9 +21,7 @@ const NotFound = () => import("../pages/NotFound.vue");
 const upMessage = () => import("../pages/upMessage.vue");
 const Immortal = () => import("../pages/Immortal.vue");
 const Mmaterials = () => import("../pages/Mmaterials.vue");
-const Subscription = () => import("../pages/Subscription.vue");
 const Brand = () => import("../pages/Brand.vue");
-const Business = () => import("../pages/Business.vue");
 const Seek = () => import("../pages/Seek.vue");
 const Advertising = () => import("../pages/Advertising.vue");
 const router = new VueRouter({
@@ -105,19 +103,9 @@ const router = new VueRouter({
       component: Mmaterials
     },
     {
-      name: "subscription",
-      path: "/subscription",
-      component: Subscription
-    },
-    {
       name: "brand",
       path: "/brand",
       component: Brand
-    },
-    {
-      name: "business",
-      path: "/business",
-      component: Business
     },
     {
       name: "cart",

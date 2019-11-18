@@ -197,6 +197,15 @@ export default {
         });
         this.datalist = data;
     }
+  },
+  async created() {
+    let {
+      data: { data }
+    } = await my.get("/goods/ddd", {
+      query: "index"
+    });
+    this.datalist = data;
+  }
 };
 </script>
 <style lang="scss">
@@ -215,19 +224,20 @@ export default {
     color: red;
 }
 .el-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    border-bottom: 1px solid #e5e5e5;
-    background-color: #ffffff;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  background-color: #ffffff;
+  z-index: 1;
 }
 .box {
-    .el-main {
-        padding-top: 23%;
-        width: 100%;
-    }
+  .el-main {
+    padding-top: 23%;
+    width: 100%;
+    padding-bottom: 16%;
+  }
 }
 .nemu {
     margin: 30px 0 0 -5px;
