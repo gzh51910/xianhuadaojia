@@ -20,6 +20,10 @@ function patch(path, data = {}, config = {}) {
   return my.patch(path, data, config);
 }
 
+// function godelete(path, data = {}, config = {}) {
+//   return my.delete(path, data, config);
+// }
+
 export default {
   get,
   post,
