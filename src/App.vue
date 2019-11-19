@@ -87,61 +87,38 @@ export default {
           icon: "el-icon-s-custom"
         }
       ],
-      restaurants: [],
       state: "",
       timeout: null,
       shuju: []
-      // gg: {}
     };
   },
   methods: {
     goBack() {
-      // history.go(-1);
       this.$router.back();
     },
-    //服务器
-    loadAll() {
-      return [
-        { value: "三全鲜食（北新泾店）", address: "长宁区新渔路144号" }
-        // { value: "三鲜食（北新", address: "2222" }
-      ];
+    async querySearchAsync(queryString, cb) {
+      if (queryString) {
+        let {
+          data: { data }
+        } = await my.get("/goods/sss", {
+          query: queryString
+        });
+        let gg = [];
+        data.map(item => {
+          gg.push({ value: item.title, address: item.gid });
+        });
+        this.shuju = gg;
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+          cb(this.shuju);
+        }, 0 * Math.random());
+      }
     },
-    querySearchAsync(queryString, cb) {
-      // let {
-      //   data: { data }
-      // } = await my.get("/goods/sss", {
-      //   query: queryString
-      // });
-      // let gg = [];
-      // data.map(item => {
-      //   gg.push(`{value:"${item.title}",address:"${item.gid}"}`);
-      // });
-      // this.shuju = gg;
-      this.gg123 = [{ address: "123", value: "3333" }];
-      var restaurants = this.restaurants;
-      var results = queryString
-        ? restaurants.filter(this.createStateFilter(queryString))
-        : restaurants;
-      console.log(results);
 
-      clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => {
-        cb(this.gg123);
-      }, 0 * Math.random());
-    },
-    createStateFilter(queryString) {
-      return state => {
-        return (
-          state.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0
-        );
-      };
-    },
     handleSelect(item) {
-      console.log(item);
+      let id = item.address;
+      this.$router.push({ name: "goods", params: { id } });
     }
-  },
-  mounted() {
-    this.restaurants = this.loadAll();
   },
   beforeUpdate() {
     //判断显示隐藏
@@ -161,10 +138,10 @@ export default {
         return;
       }
     }
+  },
+  created() {
+    this.$router.push("/Advertising");
   }
-  // created() {
-  //   this.$router.push("/Advertising");
-  // },
 };
 </script>
 

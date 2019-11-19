@@ -25,6 +25,7 @@ const Brand = () => import("../pages/Brand.vue");
 const Seek = () => import("../pages/Seek.vue");
 const Advertising = () => import("../pages/Advertising.vue");
 const router = new VueRouter({
+  // mode: 'history',
   routes: [{
       name: "home",
       path: "/home",

@@ -2,7 +2,7 @@
   <div class="no1">
     <iframe
       name="son"
-      :src="src"
+      src="http://www.覃钧.top/1.html"
       width="100%"
       height="100%"
       scrolling="no"
@@ -17,8 +17,7 @@
 export default {
   data() {
     return {
-      djs: 3,
-      src: "../mixin/1.html"
+      djs: 3
     };
   },
   methods: {
