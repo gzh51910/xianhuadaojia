@@ -63,7 +63,7 @@ export default {
     let {
       data: { data }
     } = await my.get("/goods/ddd", {
-      query: "send_elders"
+      query: "preserved_flower"
     });
     this.datalist = data;
   }

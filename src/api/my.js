@@ -2,21 +2,30 @@ import axios from 'axios';
 
 // 创建axios实例
 const my = axios.create({
-    baseURL: 'xxxx'
+  baseURL: "http://localhost:9999"
 });
 
 function get(path, params, config = {}) {
-    return my.get(path, {
-        ...config,
-        params
-    })
+  return my.get(path, {
+    ...config,
+    params
+  })
 }
 
 function post(path, data = {}, config = {}) {
-    return my.post(path, data, config)
+  return my.post(path, data, config);
 }
 
-export default {
-    get,
-    post
+function patch(path, data = {}, config = {}) {
+  return my.patch(path, data, config);
 }
+
+// function godelete(path, data = {}, config = {}) {
+//   return my.delete(path, data, config);
+// }
+
+export default {
+  get,
+  post,
+  patch
+};
