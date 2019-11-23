@@ -47,9 +47,9 @@
             </el-form-item>
         </el-form>
         <div class="reg-out-sub">
-            <span>
+            <span style="font-size: 14px;">
                 已有账号? 请
-                <i @click="$router.push('/login')">直接登录</i>
+                <i @click="$router.push('/login')" style="color:#4685ee">直接登录</i>
             </span>
         </div>
         <contact />
