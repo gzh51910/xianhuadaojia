@@ -60,6 +60,7 @@ export default {
     methods: {
         async additem() {
             let { id } = this.$route.params;
+            let Authorization = this.$store.state.common.user.Authorization
             let result = await my.patch(
                 `user/${this.$store.state.common.user._id}`,
                 { [id]: this.txtval }
@@ -69,6 +70,7 @@ export default {
                     `user/${this.$store.state.common.user._id}`
                 );
                 let user = data.data.data[0];
+                user.Authorization = Authorization;
                 this.$store.commit("login", user);
                 this.$router.push("/personal");
             } else {
