@@ -31,6 +31,25 @@
     <main>
       <router-view />
     </main>
+    <div class="circle_bot" v-if="qj">
+      <span class="s_b">
+        <b class="b1"></b>
+        <b class="b2"></b>
+      </span>
+      <div class="info">{{tishi}}</div>
+      <span class="s_b">
+        <b class="b2"></b>
+        <b class="b1"></b>
+      </span>
+      <span class="s_i">
+        <i class="i6"></i>
+        <i class="i5"></i>
+        <i class="i4"></i>
+        <i class="i3"></i>
+        <i class="i2"></i>
+        <i class="i1"></i>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -44,6 +63,9 @@ export default {
       isActive: false,
       isSeek: false,
       gg123: "",
+      tishi: "",
+      qj: false,
+      kaiqi: true,
       daohang: [
         "lover",
         "friend",
@@ -114,10 +136,41 @@ export default {
         }, 0 * Math.random());
       }
     },
-
     handleSelect(item) {
       let id = item.address;
       this.$router.push({ name: "goods", params: { id } });
+    },
+    gg(xx) {
+      let qj = this;
+      this.qj = true;
+      this.tishi = xx;
+      setTimeout(() => {
+        qj.qj = false;
+      }, 3500);
+    },
+    renwu() {
+      if (this.kaiqi) {
+        setTimeout(() => {
+          window.L2Dwidget.init({
+            pluginRootPath: "live2dw/",
+            pluginJsPath: "lib/",
+            pluginModelPath: "live2d-widget-model-wanko/assets/",
+            tagMode: false,
+            debug: false,
+            model: {
+              jsonPath:
+                "/live2dw/live2d-widget-model-wanko/assets/wanko.model.json"
+            },
+            display: { position: "lelt", width: 150, height: 300, top: 100 },
+            mobile: { show: true },
+            log: false
+          });
+        }, 0);
+        this.kaiqi = false;
+        setTimeout(() => {
+          this.gg("小老弟，来买花啦？");
+        }, 500);
+      }
     }
   },
   beforeUpdate() {
@@ -185,6 +238,7 @@ i {
 .container {
   height: 100vh;
   overflow-x: hidden;
+  position: relative;
   .qinjun {
     display: none;
   }
@@ -250,14 +304,14 @@ i {
 }
 .ggimg {
   width: 100%;
-  z-index: 3001;
+  z-index: 100000;
   position: absolute;
   height: 45%;
   top: 0;
 }
 .ggimg1 {
   width: 100%;
-  z-index: 3001;
+  z-index: 100000;
   position: absolute;
   height: 41%;
   bottom: -2%;
@@ -274,5 +328,101 @@ i {
   width: 100%;
   top: 0;
   z-index: 999;
+}
+#live2dcanvas {
+  top: 5% !important;
+  left: -20% !important;
+}
+/*提示圆角框*/
+.circle_bot {
+  clear: both;
+  font: 12px/1.125 Arial;
+  width: 50%;
+  z-index: 99999;
+  position: fixed;
+  left: 0;
+  bottom: 20%;
+}
+
+.circle_bot .s_b b,
+.circle_bot span.s_i i {
+  font-size: 1px;
+  line-height: 1px;
+  overflow: hidden;
+  display: block;
+  clear: both;
+}
+
+.circle_bot .s_b b,
+.circle_bot span.s_i i,
+.circle_bot .info {
+  background: #fff2f2;
+  border: #f88 solid;
+}
+
+.circle_bot b.b1 {
+  border-width: 1px 0 0 0;
+  margin: 0 2px;
+  height: 0px;
+}
+
+.circle_bot b.b2 {
+  border-width: 0 1px;
+  margin: 0 1px;
+  height: 1px;
+}
+
+.circle_bot span.s_i i {
+  height: 1px;
+  border-width: 0 1px;
+}
+
+.circle_bot .i1 {
+  width: 0px;
+  margin-left: 36px;
+}
+
+.circle_bot .i2 {
+  width: 2px;
+  margin-left: 35px;
+}
+
+.circle_bot .i3 {
+  width: 4px;
+  margin-left: 34px;
+}
+
+.circle_bot .i4 {
+  width: 6px;
+  margin-left: 33px;
+}
+
+.circle_bot .i5 {
+  width: 8px;
+  margin-left: 32px;
+}
+
+.circle_bot .i6 {
+  width: 10px;
+  margin-left: 31px;
+  margin-top: -1px;
+}
+
+.circle_bot .info {
+  border-width: 0 1px;
+  color: #333;
+  padding: 10px;
+}
+
+/*浅黄边白底*/
+div.circle_yellow {
+  clear: both;
+}
+
+div.circle_yellow .s_b b,
+div.circle_yellow .s_i i,
+div.circle_yellow .info {
+  background: #fff;
+  border-color: #db9;
 }
 </style>

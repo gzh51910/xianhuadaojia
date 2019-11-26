@@ -36,7 +36,7 @@
           </div>
         </el-drawer>
       </el-header>
-      <el-main style="margin-bottom:15%">
+      <el-main>
         <el-row :gutter="20">
           <el-col v-for="item in datalist" :key="item._id" :xs="12" :sm="8" :md="6" :lg="4" :xl="3">
             <el-card :body-style="{ padding: '0px' }" @click.native="gotoDetail(item.gid)">
@@ -159,6 +159,8 @@ export default {
       query: "index"
     });
     this.datalist = data;
+    this.$parent.renwu();
+    // this.$parent.gg("俺爱你");
   }
 };
 </script>

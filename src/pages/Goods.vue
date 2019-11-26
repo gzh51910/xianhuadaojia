@@ -5,13 +5,13 @@
         icon="el-icon-arrow-left"
         circle
         @click="goBack"
-        style="position: absolute;left: 3%;top: 4%;z-index: 9;"
+        style="position: fixed;left: 3%;top: 4%;z-index: 9;"
       ></el-button>
       <el-button
         icon="el-icon-shopping-cart-full"
         circle
         @click="goHome('/cart')"
-        style="position: absolute;right: 3%;top: 4%;z-index: 9;"
+        style="position: fixed;right: 3%;top: 4%;z-index: 9;"
       ></el-button>
     </div>
     <div style="width:100%;height:350px">
@@ -107,11 +107,11 @@
         </div>
       </div>
       <div class="cart">
-        <el-button type="danger" round>加入购物车咯</el-button>
+        <el-button type="danger" round @click="drawer = false;$parent.gg('哦，宝贝你真棒，去结账吧，爱你哦')">加入购物车咯</el-button>
       </div>
     </el-drawer>
     <div class="addCart">
-      <el-button type="danger" round>加入购物车♂</el-button>
+      <el-button type="danger" round @click="drawer = true;$parent.gg('俺跪下来求你啦，买朵花吧！')">加入购物车♂</el-button>
     </div>
   </div>
   <div
@@ -220,6 +220,9 @@ export default {
     }, 0);
   },
   methods: {
+    giao() {
+      this.$parent.gg("");
+    },
     goBack() {
       // history.go(-1);
       this.$router.back();
@@ -248,8 +251,6 @@ export default {
       id: this.$route.params.id
     });
     this.message = data[0];
-    console.log(this.message);
-
     //轮播图
     data[0].imgs
       .slice(1, -1)
@@ -262,6 +263,7 @@ export default {
     //   query: "Brand_zone"
     // });
     // this.datalist = data;
+    this.$parent.gg("行行好，买买花吧");
   }
 };
 </script>
@@ -392,7 +394,7 @@ h3 {
   }
 }
 .cart {
-  padding: 14px 0;
+  padding: 8% 0;
   width: 100%;
   margin-bottom: 0;
   text-align: center;
