@@ -215,6 +215,27 @@ export default {
               'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
             width: "33.3%"
           }
+        },
+        {
+          style: {
+            background:
+              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
+            width: "33.3%"
+          }
+        },
+        {
+          style: {
+            background:
+              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
+            width: "33.3%"
+          }
+        },
+        {
+          style: {
+            background:
+              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
+            width: "33.3%"
+          }
         }
       ];
     }, 0);
@@ -259,6 +280,9 @@ export default {
         item.slice(1, -1);
         this.messageimg.push(item.slice(1, -1));
       });
+    for (let i = 1; i < 6; i++) {}
+    console.log(parseInt(Math.random() * (1 - 311 + 1) + 311));
+
     // let data1 = await my.get("/goods/ddd", {
     //   query: "Brand_zone"
     // });

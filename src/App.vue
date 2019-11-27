@@ -141,10 +141,12 @@ export default {
       this.$router.push({ name: "goods", params: { id } });
     },
     gg(xx) {
+      clearTimeout(jj);
+      this.qj = false;
       let qj = this;
-      this.qj = true;
       this.tishi = xx;
-      setTimeout(() => {
+      this.qj = true;
+      let jj = setTimeout(() => {
         qj.qj = false;
       }, 3500);
     },
