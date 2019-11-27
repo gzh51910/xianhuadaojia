@@ -24,105 +24,112 @@ const Mmaterials = () => import("../pages/Mmaterials.vue");
 const Brand = () => import("../pages/Brand.vue");
 const Seek = () => import("../pages/Seek.vue");
 const Advertising = () => import("../pages/Advertising.vue");
+const Recommend = () => import("../pages/Recommend.vue");
+// const recommend = () => import("../pages/recommend.vue");
 const router = new VueRouter({
   // mode: 'history',
   routes: [{
-      name: "home",
-      path: "/home",
-      component: Home,
-    },
-    {
-      name: "elder",
-      path: "/elder",
-      component: Elder
-    },
-    {
-      name: "friend",
-      path: "/friend",
-      component: Friend
-    },
-    {
-      name: "lover",
-      path: "/lover",
-      component: Lover
-    },
-    {
-      name: "goods",
-      path: "/goods/:id",
-      component: Goods,
-    },
-    {
-      path: "/",
-      redirect: "/home"
-    },
-    {
-      name: "reg",
-      path: "/reg",
-      component: Reg
-    },
-    {
-      name: "login",
-      path: "/login",
-      component: Login
-    },
-    {
-      name: "advertising",
-      path: "/advertising",
-      component: Advertising
-    },
-    {
-      name: "mine",
-      path: "/mine",
-      component: Mine,
-      meta: {
-        requiresAuth: true
-      }
-    },
-    {
-      name: "personal",
-      path: "/personal",
-      component: Personal
-    },
-    {
-      name: "upmessage",
-      path: "/upmessage/:id",
-      component: upMessage
-    },
-    {
-      name: "seek",
-      path: "/seek",
-      component: Seek
-    },
-    {
-      name: "immortal",
-      path: "/immortal",
-      component: Immortal
-    },
-    {
-      name: "mmaterials",
-      path: "/mmaterials",
-      component: Mmaterials
-    },
-    {
-      name: "brand",
-      path: "/brand",
-      component: Brand
-    },
-    {
-      name: "cart",
-      path: "/cart",
-      component: Cart,
-      meta: {
-        requiresAuth: true
-      }
-    },
-
-    // 404页面
-    {
-      name: "404",
-      path: "*",
-      component: NotFound
+    name: "home",
+    path: "/home",
+    component: Home,
+  },
+  {
+    name: "elder",
+    path: "/elder",
+    component: Elder
+  },
+  {
+    name: "friend",
+    path: "/friend",
+    component: Friend
+  },
+  {
+    name: "lover",
+    path: "/lover",
+    component: Lover
+  },
+  {
+    name: "goods",
+    path: "/goods/:id",
+    component: Goods,
+  },
+  {
+    path: "/",
+    redirect: "/home"
+  },
+  {
+    name: "reg",
+    path: "/reg",
+    component: Reg
+  },
+  {
+    name: "login",
+    path: "/login",
+    component: Login
+  },
+  {
+    name: "advertising",
+    path: "/advertising",
+    component: Advertising
+  },
+  {
+    name: "mine",
+    path: "/mine",
+    component: Mine,
+    meta: {
+      requiresAuth: true
     }
+  },
+  {
+    name: "personal",
+    path: "/personal",
+    component: Personal
+  },
+  {
+    name: "upmessage",
+    path: "/upmessage/:id",
+    component: upMessage
+  },
+  {
+    name: "seek",
+    path: "/seek",
+    component: Seek
+  },
+  {
+    name: "immortal",
+    path: "/immortal",
+    component: Immortal
+  },
+  {
+    name: "mmaterials",
+    path: "/mmaterials",
+    component: Mmaterials
+  },
+  {
+    name: "brand",
+    path: "/brand",
+    component: Brand
+  },
+  {
+    name: "recommend",
+    path: "/recommend",
+    component: Recommend
+  },
+  {
+    name: "cart",
+    path: "/cart",
+    component: Cart,
+    meta: {
+      requiresAuth: true
+    }
+  },
+
+  // 404页面
+  {
+    name: "404",
+    path: "*",
+    component: NotFound
+  }
   ]
 });
 

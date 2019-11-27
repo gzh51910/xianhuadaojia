@@ -91,12 +91,6 @@ export default {
           icon: "el-icon-present"
         },
         {
-          name: "message",
-          path: "/message",
-          text: "消息",
-          icon: "el-icon-chat-dot-round"
-        },
-        {
           name: "cart",
           path: "/cart",
           text: "购物车",
@@ -141,12 +135,11 @@ export default {
       this.$router.push({ name: "goods", params: { id } });
     },
     gg(xx) {
-      clearTimeout(jj);
       this.qj = false;
       let qj = this;
       this.tishi = xx;
       this.qj = true;
-      let jj = setTimeout(() => {
+      setTimeout(() => {
         qj.qj = false;
       }, 3500);
     },

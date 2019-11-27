@@ -28,25 +28,29 @@
         </strong>
       </div>
     </div>
-    <div class="product-shink-option" @click="drawer = true" type="primary">
+    <div
+      class="product-shink-option"
+      @click="drawer = true;$parent.gg('俺跪下来求你啦，买朵花吧！')"
+      type="primary"
+    >
       选择商品型号尺寸
       <i class="el-icon-arrow-right"></i>
     </div>
     <div>
-      <div style="text-align: center;color: palevioletred;">商品推荐</div>
+      <div style="text-align: center;color: palevioletred;margin-bottom: 3%;">商品推荐</div>
       <div style="width:100%;height:100px">
         <slider ref="slider" :options="options">
           <slideritem v-for="(item,index) in someList1" :key="index" :style="item.style">
             <div class="sptj">
-              <div style>一生相伴</div>
-              <div>￥269.00</div>
+              <div>{{item.title}}</div>
+              <div>{{item.price}}</div>
             </div>
           </slideritem>
         </slider>
       </div>
     </div>
     <div class="presentation">
-      <el-radio-group v-model="radio1" text-color="#999999" fill="#e7284d">
+      <el-radio-group v-model="radio1" text-color="#999999" fill="#e7284d" @change="agreeChange">
         <el-radio-button label="商品简介"></el-radio-button>
         <el-radio-button label="商品评论"></el-radio-button>
       </el-radio-group>
@@ -139,13 +143,13 @@ export default {
       someList1: [],
       message: "",
       messageimg: [],
+      datalist: "",
       options1: {
         currentPage: 0,
         thresholdDistance: 100,
         thresholdTime: 500,
         autoplay: false,
         loop: true,
-        // direction: "vertical",
         loopedSlides: 1,
         slidesToScroll: 1,
         timingFunction: "ease",
@@ -170,88 +174,61 @@ export default {
     slider,
     slideritem
   },
-  mounted() {
+  async mounted() {
     let that = this;
+    let data1 = await my.get("/goods/jj", {});
+    this.datalist = data1.data.data;
     setTimeout(function() {
+      let bb = [];
+      for (let i = 0; i < 6; i++) {
+        bb.push({
+          gid: that.datalist[i].url,
+          title: that.datalist[i].title,
+          price: that.datalist[i].price,
+          style: {
+            background: `url("${that.datalist[i].url}")left/100% 100%`,
+            width: "33%"
+          }
+        });
+      }
       that.someList = [
         {
           style: {
-            background:
-              'url("//asset.ibanquan.com/image/59a4d4a70dd76c3e3f000e40/s_w480h480.jpeg?v=1503974568")left/100% 100%'
-            // `url("${this.messageimg[0]}")left/100% 100%`
+            background: `url("${that.messageimg[0]}")left/100% 100%`
           }
         },
         {
           style: {
-            background:
-              'url("//asset.ibanquan.com/image/59a4d4a53f8f90227a000c9d/s_w480h480.jpeg?v=1503974565")left/100% 100%'
+            background: `url("${that.messageimg[1]}")left/100% 100%`
           }
         },
         {
           style: {
-            background:
-              'url("//asset.ibanquan.com/image/59a4d4a5b1b9572079000d8a/s_w480h480.jpeg?v=1503974565")left/100% 100%'
+            background: `url("${that.messageimg[2]}")left/100% 100%`
           }
         }
       ];
-      that.someList1 = [
-        {
-          style: {
-            background:
-              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33%"
-          }
-        },
-        {
-          style: {
-            background:
-              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33.3%"
-          }
-        },
-        {
-          style: {
-            background:
-              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33.3%"
-          }
-        },
-        {
-          style: {
-            background:
-              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33.3%"
-          }
-        },
-        {
-          style: {
-            background:
-              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33.3%"
-          }
-        },
-        {
-          style: {
-            background:
-              'url("//asset.ibanquan.com/image/5b5889e820663d15db000b71/s.jpeg?v=1532529128")left/100% 100%',
-            width: "33.3%"
-          }
-        }
-      ];
+      that.someList1 = bb;
     }, 0);
   },
   methods: {
-    giao() {
-      this.$parent.gg("");
+    agreeChange: function(val) {
+      if (val == "商品评论") {
+        this.$parent.gg("不用看啦，我的花是没有差评的，全是好评");
+      }
     },
     goBack() {
-      // history.go(-1);
       this.$router.back();
     },
     goHome(path) {
       this.$router.push(path);
     },
     handleChange(value) {
+      if (value == 1) {
+        this.$parent.gg("减不得减不得，这可减不得，最少买一件吧(┬＿┬)");
+      } else if (value > value - 1) {
+        this.$parent.gg("求求你多买点吧，不然程序猿会把我给删了(┬＿┬)");
+      }
       this.goodsvue = value;
     },
     async buy() {
@@ -272,7 +249,7 @@ export default {
       id: this.$route.params.id
     });
     this.message = data[0];
-    //轮播图
+    // //轮播图
     data[0].imgs
       .slice(1, -1)
       .split(",")
@@ -280,13 +257,6 @@ export default {
         item.slice(1, -1);
         this.messageimg.push(item.slice(1, -1));
       });
-    for (let i = 1; i < 6; i++) {}
-    console.log(parseInt(Math.random() * (1 - 311 + 1) + 311));
-
-    // let data1 = await my.get("/goods/ddd", {
-    //   query: "Brand_zone"
-    // });
-    // this.datalist = data;
     this.$parent.gg("行行好，买买花吧");
   }
 };

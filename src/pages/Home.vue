@@ -37,6 +37,24 @@
         </el-drawer>
       </el-header>
       <el-main>
+        <slider ref="slider" :options="options">
+          <slideritem
+            v-for="(item,index) in someList"
+            :key="index"
+            :style="item.style"
+          >{{item.html}}</slideritem>
+        </slider>
+        <img
+          src="//asset.ibanquan.com/s/41222/403/wrapper_slide_1?v=1543823931_1547108401"
+          style="width: 100%;padding-bottom: 5%;"
+        />
+        <img
+          src="//asset.ibanquan.com/s/41222/403/wrapper_slide_2?v=1543823931_1547108401"
+          style="width: 100%;padding-bottom: 5%;"
+        />
+        <h4
+          style="text-align: center;font-size: 1.5em;background: rgb(241, 127, 126);padding: 2%;margin-bottom: 5%;color: firebrick;"
+        >花花世界</h4>
         <el-row :gutter="20">
           <el-col v-for="item in datalist" :key="item._id" :xs="12" :sm="8" :md="6" :lg="4" :xl="3">
             <el-card :body-style="{ padding: '0px' }" @click.native="gotoDetail(item.gid)">
@@ -77,12 +95,25 @@
 <script>
 import { my } from "../api";
 import { mapState } from "vuex";
+import { slider, slideritem } from "vue-concise-slider";
 export default {
   data() {
     return {
       drawer: false,
       direction: "ltr",
       Show_hidden: true,
+      options: {
+        currentPage: 0,
+        thresholdDistance: 100,
+        thresholdTime: 500,
+        autoplay: false,
+        loop: true,
+        // direction: "vertical",
+        loopedSlides: 1,
+        slidesToScroll: 1,
+        timingFunction: "ease",
+        speed: 300
+      },
       menu: [
         {
           name: "lover",
@@ -115,27 +146,38 @@ export default {
           icon: "el-icon-s-home"
         },
         {
-          name: "subscription",
-          path: "/subscription",
-          text: "鲜花订阅",
-          icon: "el-icon-s-home"
-        },
-        {
           name: "brand",
           path: "/brand",
           text: "品牌专区",
-          icon: "el-icon-s-home"
-        },
-        {
-          name: "business",
-          path: "/business",
-          text: "商务用花",
           icon: "el-icon-s-home"
         }
       ],
       value: "",
       datalist: []
     };
+  },
+  components: {
+    slider,
+    slideritem
+  },
+  mounted() {
+    let that = this;
+    setTimeout(function() {
+      that.someList = [
+        {
+          style: {
+            background:
+              'url("//asset.ibanquan.com/s/41222/403/index_slide_2?v=1543823931_1547108401")left/100% 100%'
+          }
+        },
+        {
+          style: {
+            background:
+              'url("//asset.ibanquan.com/s/41222/403/index_slide_3?v=1543823931_1547108401")left/100% 100%'
+          }
+        }
+      ];
+    }, 0);
   },
   computed: {
     ...mapState({
@@ -160,7 +202,6 @@ export default {
     });
     this.datalist = data;
     this.$parent.renwu();
-    // this.$parent.gg("俺爱你");
   }
 };
 </script>
@@ -186,11 +227,11 @@ export default {
   display: flex;
   border-bottom: 1px solid #e5e5e5;
   background-color: #ffffff;
-  z-index: 1;
+  z-index: 2;
 }
 .box {
   .el-main {
-    padding-top: 23%;
+    padding-top: 25%;
     width: 100%;
     padding-bottom: 16%;
   }
@@ -281,5 +322,9 @@ export default {
   img {
     width: 100%;
   }
+}
+.el-main .slider-container {
+  height: 30%;
+  margin-bottom: 5%;
 }
 </style>
